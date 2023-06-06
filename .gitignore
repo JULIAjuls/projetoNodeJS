@@ -1,3 +1,4 @@
 node_modules/*
 package-lock.json
 *.sqlite
+src/views/pessoa/cadastrar.html
