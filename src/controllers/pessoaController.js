@@ -68,10 +68,37 @@ function editarPessoa(req, res) {
 
 }
 
+function deletarPessoa(req, res) {
+    let pessoa = {
+        nome: req.body.nome,
+        sobrenome: req.body.sobrenome,
+        cpf: req.body.cpf,
+        email: req.body.email,
+        telefone: req.body.telefone,
+        altura: req.body.altura,
+        peso: req.body.peso
+    }
+    Pessoa.destroy(
+      pessoa,
+      {
+        where: {
+          id: req.body.id,
+        },
+      }
+    ).then(function (sucesso) {
+        res.render("pessoa/editar.html", {pessoa, sucesso});
+    })
+    .catch(function (erro) {
+        res.render("pessoa/editar.html", {pessoa, erro})
+    });
+
+}
+
 module.exports =  {
     cadastrarView,
     cadastrarPessoa,
     listarView,
     editarView,
-    editarPessoa
+    editarPessoa,
+    deletarPessoa
 };
