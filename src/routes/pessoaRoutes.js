@@ -11,7 +11,6 @@ router.get('/pessoa/listar', pessoaController.listarView);
 router.get('/pessoa/editar/:id', pessoaController.editarView);
 router.post('/pessoa/editar', pessoaController.editarPessoa);
 
-//router.('/pessoa/deletar/:id')// GET ou DELETE pesquisar
-
+router.post('/pessoa/deletar', pessoaController.deletarPessoa);
 
 module.exports = router;

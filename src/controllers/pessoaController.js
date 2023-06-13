@@ -53,8 +53,7 @@ function editarPessoa(req, res) {
         peso: req.body.peso
     }
     Pessoa.update(
-      pessoa,
-      {
+      pessoa,{
         where: {
           id: req.body.id,
         },
@@ -69,29 +68,18 @@ function editarPessoa(req, res) {
 }
 
 function deletarPessoa(req, res) {
-    let pessoa = {
-        nome: req.body.nome,
-        sobrenome: req.body.sobrenome,
-        cpf: req.body.cpf,
-        email: req.body.email,
-        telefone: req.body.telefone,
-        altura: req.body.altura,
-        peso: req.body.peso
-    }
     Pessoa.destroy(
-      pessoa,
-      {
-        where: {
-          id: req.body.id,
-        },
-      }
-    ).then(function (sucesso) {
-        res.render("pessoa/editar.html", {pessoa, sucesso});
-    })
-    .catch(function (erro) {
-        res.render("pessoa/editar.html", {pessoa, erro})
+        { 
+            where: { 
+                id: req.body.id,
+            }, 
+        }
+    ).then(function(sucesso){
+        res.redirect("listar");
+    }).catch((erro) => {
+        console.log(erro)
+        res.render("listar.html", {erro});
     });
-
 }
 
 module.exports =  {
@@ -100,5 +88,5 @@ module.exports =  {
     listarView,
     editarView,
     editarPessoa,
-    deletarPessoa
+    deletarPessoa,
 };
