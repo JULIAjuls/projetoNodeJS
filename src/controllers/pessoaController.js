@@ -67,7 +67,17 @@ function editarPessoa(req, res) {
 
 }
 
+function deletarView(req, res){
+    let id = req.params.id
+    let pessoa;
+    Pessoa.findByPk(id).then(function(pessoa){
+        res.render("pessoa/deletar.html", {pessoa});
+    })
+}
+
 function deletarPessoa(req, res) {
+
+    
     Pessoa.destroy(
         { 
             where: { 
@@ -78,7 +88,7 @@ function deletarPessoa(req, res) {
         res.redirect("listar");
     }).catch((erro) => {
         console.log(erro)
-        res.render("listar.html", {erro});
+        res.render("pessoa/listar.html", {erro});
     });
 }
 
@@ -88,5 +98,6 @@ module.exports =  {
     listarView,
     editarView,
     editarPessoa,
+    deletarView,
     deletarPessoa,
 };
