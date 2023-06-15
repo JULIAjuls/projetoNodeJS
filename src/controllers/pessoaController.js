@@ -67,17 +67,7 @@ function editarPessoa(req, res) {
 
 }
 
-function deletarView(req, res){
-    let id = req.params.id
-    let pessoa;
-    Pessoa.findByPk(id).then(function(pessoa){
-        res.render("pessoa/deletar.html", {pessoa});
-    })
-}
-
 function deletarPessoa(req, res) {
-
-    
     Pessoa.destroy(
         { 
             where: { 
@@ -98,6 +88,5 @@ module.exports =  {
     listarView,
     editarView,
     editarPessoa,
-    deletarView,
     deletarPessoa,
 };

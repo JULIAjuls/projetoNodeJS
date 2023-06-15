@@ -49,7 +49,11 @@
                             <td>{{telefone}}</td>
                             <td>{{altura}}</td>
                             <td>{{peso}}</td>
-                            <td><button type="button" class="btn btn-danger"><a class="text-decoration-none text-light" href="/pessoa/deletar/{{id}}">Deletar cadastro</a></button></td>
+                            <form action="/pessoa/deletar" method="post">
+                                <input type="hidden" value="{{id}}" name="id" id="id">
+                                <td><button type="submit" class="btn btn-danger">Deletar cadastro</button></td>
+                            </form>
+                            
                         </tr>
                         {{/pessoas}}
                     </tbody>
